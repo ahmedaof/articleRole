@@ -29,9 +29,15 @@
         <li> <router-link to="/article">articles</router-link></li>
      
         <li><router-link to="/category">categories</router-link></li>
-        @if(!Auth::User())
-        <li><router-link  to="/logout">logout</router-link></li>
-          @endif
+        
+        <li class="d-none" id="logout"><a  href="/logout">logout</a></li>
+
+
+        <li class="d-none" id="register"><a  href="/register">register</a></li>
+
+      
+        
+      
       </ul>
     </div>
   </nav>
@@ -47,7 +53,11 @@
     <script>
          $(document).ready(function() {
          
-        
+        if(User.loggedIn()){
+          $('#logout').removeClass('d-none');
+        }else{
+          $('#register').removeClass('d-none');
+        }
     M.updateTextFields();
   });
 
@@ -56,3 +66,4 @@
     <script src="{{asset('js/app.js')}}" ></script>
     </body>
 </html>
+
